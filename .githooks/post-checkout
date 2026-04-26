@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Git passes $3=1 when checkout is triggered by clone.
+if [ "$3" -eq 1 ]; then
+    REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+
+    if [ -z "$REPO_ROOT" ]; then
+        exit 0
+    fi
+
+    echo "Nano-Search: detected clone checkout, starting background indexing..."
+
+    # Low-priority detached indexing process.
+    nice -n 19 nohup python3 -m nano_search.cli \
+        --tool index_repo \
+        --payload "{\"repoPath\":\"${REPO_ROOT}\",\"batchSize\":12}" \
+        >/dev/null 2>&1 &
+
+    echo "Nano-Search: background indexing started (PID: $!)."
+fi

@@ -1,0 +1,27 @@
+yc_cloud_id  = "b1gxxxxxxxxxxxxx"
+yc_folder_id = "b1gxxxxxxxxxxxxx"
+yc_token     = "y0_AQAAAA..."
+
+yc_zone = "ru-central1-a"
+
+name_prefix = "otel-demo"
+
+subnet_cidr_blocks = ["10.10.0.0/24"]
+allowed_cidrs      = ["203.0.113.10/32"]
+
+platform_id    = "standard-v3"
+vm_cores       = 8
+vm_memory_gb   = 16
+boot_disk_size_gb = 120
+boot_disk_type = "network-ssd"
+
+ssh_user       = "ubuntu"
+ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... your_email@example.com"
+
+repo_url = "https://github.com/open-telemetry/opentelemetry-demo.git"
+repo_ref = "main"
+
+frontend_proxy_port = 8080
+grafana_port        = 3000
+jaeger_ui_port      = 16686
+additional_ingress_ports = [10000]
